@@ -8,6 +8,7 @@ node() {
         env.BUILD_TIME = sh(returnStdout: true, script: 'date +%F-%T').trim()
         echo "Workspace set to:" + env.WORKSPACE_LOCAL
         echo "Build time:" + env.BUILD_TIME
+	
     } */
     stage('Checkout Self') {
         git branch: 'master', credentialsId: '', url: repoURL
