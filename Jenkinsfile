@@ -9,7 +9,7 @@ node() {
     stage('Cucumber Tests') {
             bat """
 			cd ${env.WORKSPACE_LOCAL}
-			mvn clean generate
+			mvn clean verify
 		"""
     }
     stage('Expose report') {
