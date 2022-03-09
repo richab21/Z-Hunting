@@ -10,12 +10,17 @@ node() {
 //         echo "Build time:" + env.BUILD_TIME
 //
 //     }
-         stage ('Build') {
-             git url: repoURL
-             withMaven {
-               sh "mvn clean verify"
-             } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
-          }
+          stage('Initialize'){
+                     steps{
+                         echo "PATH = ${M2_HOME}/bin:${PATH}"
+                         echo "M2_HOME = /opt/maven"
+                     }
+                 }
+                 stage('Build') {
+                     steps {
+                         sh 'mvn -B -DskipTests clean package'
+                     }
+                 }
     stage('Checkout Self') {
         git branch: 'master', credentialsId: '', url: repoURL
     }
