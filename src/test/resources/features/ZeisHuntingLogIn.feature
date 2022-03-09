@@ -1,5 +1,5 @@
 Feature: login
-
+@HUN
   Scenario Outline: Login with wrong username and password
     Given I navigate to the login page
     When I provide "<username>" and "<password>"
