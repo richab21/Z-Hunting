@@ -13,16 +13,15 @@ node() {
 		"""
     }
     stage('Expose report') {
-        archive "**/cucumber.json"
-        cucumber '**/cucumber.json'
+        archive "target/cucumber.json"
+        cucumber 'target/cucumber.json'
     }
 	stage('Import results to Xray') {
 
 		def description = "[BUILD_URL|${env.BUILD_URL}]"
 		def labels = '["regression","automated_regression"]'
 		def environment = "DEV"
-		def testExecutionFieldId = 10007
-		def testEnvironmentFieldName = "customfield_10132"
+		def testExecutionFieldId = 10008
 		def projectKey = "HUN"
 		def xrayConnectorId = '0cc58c81-1099-483d-9141-0f8e2e2e2f9c'
 		def info = '''{
