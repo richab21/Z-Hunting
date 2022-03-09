@@ -1,7 +1,5 @@
 node() {
 
-    checkout scm
-    def a = load('a.groovy')
     def repoURL = 'https://github.com/richab21/Z-Hunting.git'
 
 
