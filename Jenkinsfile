@@ -10,10 +10,6 @@ node() {
 //         echo "Build time:" + env.BUILD_TIME
 //
 //     }
-          stage('Initialize'){
-                         echo "PATH = ${M2_HOME}/bin:${PATH}"
-                         echo "M2_HOME = /opt/maven"
-                 }
                  stage('Build') {
                          sh 'mvn clean verify'
                  }
