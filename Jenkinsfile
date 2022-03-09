@@ -11,14 +11,14 @@ node() {
 //
 //     }
                  stage('Build') {
-                         sh 'mvn clean verify'
+                         bat 'mvn clean verify'
                  }
     stage('Checkout Self') {
         git branch: 'master', credentialsId: '', url: repoURL
     }
     stage('Cucumber Tests') {
         withMaven(maven: 'maven35') {
-            sh """
+            bat """
 			cd ${env.WORKSPACE_LOCAL}
 			mvn clean test
 		"""
