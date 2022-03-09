@@ -1,6 +1,6 @@
 node() {
 
-    def repoURL = 'https://github.com/gabrielstar/cucumber.git'
+    def repoURL = 'https://github.com/richab21/Z-Hunting.git'
 
     stage("Prepare Workspace") {
         cleanWs()
@@ -10,7 +10,7 @@ node() {
         echo "Build time:" + env.BUILD_TIME
     }
     stage('Checkout Self') {
-        git branch: 'xray_video', credentialsId: '', url: repoURL
+        git branch: 'master', credentialsId: '', url: repoURL
     }
     stage('Cucumber Tests') {
         withMaven(maven: 'maven35') {

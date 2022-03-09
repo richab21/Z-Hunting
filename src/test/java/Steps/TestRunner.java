@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         plugin = {
                 "pretty",
                 "html:test-output",
-                "json:target/json_output/cucumber.json",
+                "json:target/cucumber.json",
                 "html:target/cucumber-html-report"
         },
         monochrome = true,
