@@ -7,4 +7,4 @@ Feature: login
     Then I should see the error alert
     Examples:
       | username                     | password         |
-      | tester1 | password1 |
+      | tester | password |
