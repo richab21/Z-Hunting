@@ -1,7 +1,7 @@
 node() {
 
     def repoURL = 'https://github.com/richab21/Z-Hunting.git'
-    env.BUILD_TIME = sh(returnStdout: true, script: 'date +%F-%T').trim()
+    env.BUILD_TIME = bat (returnStdout: true, script: 'date +%F-%T').trim()
     echo "Build time:" + env.BUILD_TIME
 
     stage('Checkout Self') {
