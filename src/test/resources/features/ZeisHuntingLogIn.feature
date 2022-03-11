@@ -1,4 +1,4 @@
-Feature: login
+Feature: login with wrong data
 
   @HUN-10
   Scenario Outline: Login with wrong username and password
