@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,7 +30,7 @@ public class StepDefs {
     public void i_provide_and(String arg1, String arg2) throws Throwable {
         //driver.wait(2000);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(12, 1));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20, 1));
         wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("signInName"))));
 
         driver.findElement(By.id("signInName")).sendKeys(arg1);
@@ -43,8 +44,10 @@ public class StepDefs {
     }
     @Then("^I should see the error alert$")
     public void i_should_see_the_Error_message() throws Throwable {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
+        JavascriptExecutor j = (JavascriptExecutor)driver;
+        if (j.executeScript("return document.readyState").toString().equals("complete")){
+            System.out.println("Page has loaded");
+        }
         try{
             if(driver.findElement(By.name("Password")).isDisplayed()){
                 Assert.assertTrue(true);
@@ -55,5 +58,12 @@ public class StepDefs {
         }finally{
             driver.quit();
         }
+    }
+
+    @Then("I should be logged in")
+    public void iShouldBeLoggedIn() {
+        String actualUrl="https://hunting.zeiss.com/dashboard";
+        String expectedUrl= driver.getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
     }
 }
